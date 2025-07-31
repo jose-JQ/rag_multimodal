@@ -18,14 +18,14 @@ const Header: React.FC = () => {
           </div>
           
           <nav className="flex items-center space-x-6">
-            <button className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-purple-700/50 hover:bg-purple-600/60 text-purple-100 transition-all duration-200 hover:scale-105">
+            {/* <button className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-purple-700/50 hover:bg-purple-600/60 text-purple-100 transition-all duration-200 hover:scale-105">
               <FileText className="w-4 h-4" />
               <span className="hidden sm:inline">Docs</span>
             </button>
             <button className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-purple-700/50 hover:bg-purple-600/60 text-purple-100 transition-all duration-200 hover:scale-105">
               <Settings className="w-4 h-4" />
               <span className="hidden sm:inline">Configuración</span>
-            </button>
+            </button> */}
           </nav>
         </div>
       </div>

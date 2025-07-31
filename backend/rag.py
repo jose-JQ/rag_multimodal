@@ -1,11 +1,11 @@
 import torch
 from transformers import CLIPProcessor, CLIPModel, BlipProcessor, BlipForConditionalGeneration
+#from transformers import MarianMTModel, MarianTokenizer
 from pinecone import Pinecone, ServerlessSpec
 from PIL import Image
 from dotenv import load_dotenv
 import google.generativeai as genai 
 import os
-
 
 class Rag:
     def __init__(self):
@@ -35,6 +35,11 @@ class Rag:
         # --- Gemini ---
         genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
         self.llm = genai.GenerativeModel("gemini-1.5-flash")
+
+        ## --Translate
+       # self._tr_model_name = 'Helsinki-NLP/opus-mt-en-es'
+       # self.tokenizer = MarianTokenizer.from_pretrained(self._tr_model_name)
+       # self.tr_model = MarianMTModel.from_pretrained(self._tr_model_name)
 
     def describir_img(self, image: Image.Image) -> str:
         """
@@ -99,8 +104,17 @@ El usuario desea comprender lo siguiente: {query}"""
     def generar_respuesta(self, prompt: str) -> str:
         response = self.llm.generate_content(prompt)
         return response.text
+    
+    """ def translate_en_to_es(self, text):
+        inputs =  self.tokenizer([text], return_tensors="pt", padding=True)
+        translated = self.tr_model.generate(**inputs)
+        result = self.tokenizer.batch_decode(translated, skip_special_tokens=True)
+        return result[0]"""
 
     def search(self, query, top_k=5):
+        """ if isinstance(query, str): 
+            query = self.translate_en_to_es(query)"""
+        
         retrieved_data = self.retrival(query, top_k)
         contexto = "\n".join([f"- {item['caption']}" for item in retrieved_data])
 
