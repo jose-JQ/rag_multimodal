@@ -47,7 +47,7 @@ La idea principal es mejorar la búsqueda tradicional basada solo en texto, inco
 
 El proyecto está organizado en tres componentes principales:
 
-1.  **Backend (`backend.py`):** Gestiona las solicitudes API con FastAPI, actúa como orquestador para el módulo RAG y maneja CORS y errores.
+1.  **Backend (`main.py`):** Gestiona las solicitudes API con FastAPI, actúa como orquestador para el módulo RAG y maneja CORS y errores.
 2.  **Núcleo RAG (`rag.py`):** Contiene toda la lógica de IA/ML, inicializando y gestionando las conexiones a Pinecone y los modelos CLIP, BLIP y Gemini. Proporciona métodos para la descripción de imágenes (`describir_img`), la recuperación multimodal (`retrival`), la generación de prompts (`generar_prompt_narrativo`), y la ejecución general de la búsqueda (`search`).
 3.  **Frontend (Aplicación React):** Proporciona la interfaz de usuario para interactuar con el backend. Incluye componentes para el encabezado, el formulario de búsqueda, el carrusel de imágenes, el panel de resultados, un spinner de carga y mensajes de error. Gestiona la entrada del usuario (texto/imagen), envía solicitudes al backend y muestra los resultados.
 
@@ -65,7 +65,7 @@ El proyecto está organizado en tres componentes principales:
 ### 1. Clonar el repositorio
 
 ```bash
-git clone <tu-url-del-repositorio>
+git clone https://github.com/jose-JQ/rag_multimodal
 cd quantic-search
 ```
 
